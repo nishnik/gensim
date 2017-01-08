@@ -221,9 +221,9 @@ class DtmModel(utils.SaveLoad):
         self.obs_ = np.zeros((self.num_topics, self.num_terms * len(self.time_slices)))
 
         for t in range(self.num_topics):
-                topic = "%03d" % t
-                self.lambda_[t, :] = np.loadtxt(self.fout_prob().format(i=topic))
-                self.obs_[t, :] = np.loadtxt(self.fout_observations().format(i=topic))
+            topic = "%03d" % t
+            self.lambda_[t, :] = np.loadtxt(self.fout_prob().format(i=topic))
+            self.obs_[t, :] = np.loadtxt(self.fout_observations().format(i=topic))
         # cast to correct shape, lambda[5,10,0] is the proportion of the 10th
         # topic in doc 5 at time 0
         self.lambda_.shape = (self.num_topics, self.num_terms, len(self.time_slices))
@@ -255,7 +255,7 @@ class DtmModel(utils.SaveLoad):
         else:
             num_topics = min(num_topics, self.num_topics)
             chosen_topics = range(num_topics)
-             # add a little random jitter, to randomize results around the same
+            # add a little random jitter, to randomize results around the same
             # alpha
             # sort_alpha = self.alpha + 0.0001 * \
             #     numpy.random.rand(len(self.alpha))
@@ -310,7 +310,7 @@ class DtmModel(utils.SaveLoad):
         all of these are needed to visualise topics for DTM for a particular time-slice via pyLDAvis.
         input parameter is the year to do the visualisation.
         """
-        topic_term = np.exp(self.lambda_[:,:,time]) / np.exp(self.lambda_[:,:,time]).sum()
+        topic_term = np.exp(self.lambda_[:, :, time]) / np.exp(self.lambda_[:, :, time]).sum()
         topic_term = topic_term * self.num_topics
 
         doc_topic = self.gamma_
