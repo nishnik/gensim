@@ -198,7 +198,7 @@ class LdaVowpalWabbit(utils.SaveLoad):
 
         _run_vw_command(cmd)
 
-        # ensure that future updates of this model use correct offset
+        # ensure that future updates of this model use correct offset
         self.offset += corpus_size
 
     def update(self, corpus):
@@ -217,7 +217,7 @@ class LdaVowpalWabbit(utils.SaveLoad):
 
         _run_vw_command(cmd)
 
-        # ensure that future updates of this model use correct offset
+        # ensure that future updates of this model use correct offset
         self.offset += corpus_size
 
     def log_perplexity(self, chunk):
